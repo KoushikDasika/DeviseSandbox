@@ -1,0 +1,67 @@
+.lark-alert {
+  z-index: 200;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 78px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: $body-font;
+  &.notice{
+    background: rgba(lighten($pos-green, 25%),0.85);
+    border-color: darken($pos-green, 25%);
+    color: darken($pos-green, 25%);
+  }
+  &.alert{
+    background: $no-availability-bg;
+    border: 1px solid darken($no-availability-bg, 10%);
+    color: $white;
+  }
+  .lark-alert-content{
+    position: absolute;
+    height: 78px;
+    padding: 24px;
+    text-align: center;
+    bottom:0px;
+    left:0px;
+    right:0px;
+  }
+}
+
+// ANGULAR ANIMATION CLASSES
+
+.lark-alert.ng-enter,
+.lark-alert.ng-leave{
+  @include ease(all, 0.5s);
+}
+
+.lark-alert.ng-enter {
+  height: 0px;
+  opacity:0;
+}
+.lark-alert.ng-enter.ng-enter-active {
+  height: 78px;
+  opacity:1;
+}
+
+.lark-alert.ng-leave {
+  height: 78px;
+}
+.lark-alert.ng-leave.ng-leave-active {
+  height: 0px;
+}
+
+// HEADER BACKGROUND DARKENING CLASSES (WHEN ALERT PRESENT)
+
+.header-background-overlay{
+  background:rgba($black,0);
+  border-bottom: 1px solid rgba($white, 0.0);
+  @include ease(background, 0.5s);
+  &.alert-active{
+    background:rgba($black,1);
+    border-bottom: 1px solid rgba($white, 0.3);
+  }
+}

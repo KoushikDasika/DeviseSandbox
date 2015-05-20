@@ -1,1 +1,22 @@
-Koushik is the greatest ever. Of all time.
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <table class='table table-bordered table-striped'>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Link</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="article in articles">
+            <td>{{article.id}}</td>
+            <td>{{article.title}}</td>
+            <td><a href="/#/users/{{user_id}}/articles/{{article.id}}">See Article</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

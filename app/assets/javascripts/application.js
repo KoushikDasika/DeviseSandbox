@@ -35,8 +35,12 @@ angular.module('deviseSandbox', [
     templateUrl: '/assets/pages/home/home.html',
     controller: 'HomeController'
   })
-  .when('/users', {
-    templateUrl: '/assets/pages/user/users.html',
+  .when('/users/:user_id/articles', {
+    templateUrl: '/assets/pages/users/users.html',
     controller: 'UserController'
+  })
+  .when('/users/:user_id/articles/:article_id', {
+    templateUrl: '/assets/pages/articles/articles.html',
+    controller: 'ArticleController'
   })
 }])

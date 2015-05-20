@@ -1,0 +1,251 @@
+a.btn {
+  text-decoration: none;
+}
+
+.btn, select {
+  &:active, &:focus {
+    outline:none;
+  }
+}
+
+.btn {
+  @include ease(all, .15s);
+}
+
+.btn.btn-dark {
+  background: $black;
+  opacity: 0.6;
+  border: 1px solid $medium-gray;
+  color: $white;
+  font-weight: 600;
+  font-family: $body-font;
+  text-transform: uppercase;
+  @include transition (opacity 0.25s ease-in-out);
+
+  &.active {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 1;
+    color: $white;
+  }
+
+  &.btn-sm {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: .05em;
+  }
+}
+
+.btn.btn-dim {
+  background-color: $dark-gray;
+  border: none;
+  color: $medium-gray;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: $body-font;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  &:hover, &:active, &:focus {
+    background-color: darken($dark-gray, 5%);
+    color: $light-gray;
+  }
+}
+
+.btn.btn-book-flight {
+  background-color: $pale-gray;
+  padding: 6px 20px 4px;
+  border:1px solid $lark-purple;
+  color: $lark-purple;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: $body-font;
+  text-transform: uppercase;
+}
+
+table.fares tbody:hover {
+  .btn.btn-book-flight {
+    background-color: $lark-purple;
+    color: $white;
+    text-shadow: 0px 0px 1px rgba($black,0.2);
+  }
+}
+
+.btn.btn-search-bar {
+  background-color: $lark-purple;
+  margin-top: 26px;
+  padding: 4px 12px 2px 12px;
+  border: 1px solid darken($lark-purple, 14%);
+  border-radius: 4px;
+  color: $white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 1px rgba($black,0.3);
+
+  &:hover {
+    background-color: darken($lark-purple, 5%);
+  }
+}
+
+form.ng-pristine {
+  .btn.btn-search-bar {
+    background-color: transparent;
+    margin-top: 26px;
+    border: 1px solid rgba($white, 0.4);
+    border-radius:4px;
+    color: rgba($white, 0.5);
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+.btn.btn-cto {
+  background-color: $lark-purple;
+  padding: 8px 12px 6px 18px;
+  border: 1px solid darken($lark-purple, 6%);
+  border-radius: 4px;
+  @include box-shadow(0px 1px 1px rgba($black, 0.4));
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 1px rgba($black,0.3);
+
+  &:hover, &:active, &:focus {
+    background-color: darken($lark-purple, 5%);
+    color: $white;
+  }
+
+  &.btn-cto-border {
+    background: rgba($gray, .3);
+    color: $white;
+    border: 2px solid lighten($gray, 50%);
+
+    &:hover {
+      color: $white;
+      border-color: $white;
+      background: rgba($gray, .5);
+    }
+  }
+}
+
+.btn.btn-hold {
+  background-color: $lark-purple;
+  width: 100%;
+  border: 1px solid darken($lark-purple, 10%);
+  color: $white;
+  padding: 10px 15px 20px 18px;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-shadow: 0 0 2px rgba($black, .4);
+  border-radius: 4px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken($lark-purple, 5%);
+    color: $white;
+  }
+
+  .small {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 5px;
+    letter-spacing: 0.05em;
+
+    em {
+      opacity: 0.75;
+    }
+  }
+}
+
+.btn.btn-flights {
+  background-color: $lark-purple;
+  width:100%;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 0px 0 1px rgba($black,0.3);
+  @include animation(fadein .4s ease-in-out);
+  @include animation-delay(.2s);
+
+  &:hover, &:active, &:focus {
+    background-color: darken($lark-purple, 5%);
+    color: $white;
+  }
+}
+
+.btn.btn-search {
+  font-size: 18px;
+}
+
+.btn.btn-search, .btn.btn-book {
+  background-color: $lark-purple;
+  border: none;
+  color: $white;
+  font-weight: 600;
+  font-family: $body-font;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  @include ease(all, .2s);
+
+  &:hover, &:active, &:focus {
+    background-color: darken($lark-purple, 5%);
+    color: $white;
+  }
+
+  &.disabled, &[disabled] {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 1;
+    pointer-events: none;
+    color: rgba($white,0.5);
+  }
+}
+
+.btn.btn-book-inverted {
+  background-color: $white;
+  border: none;
+  color: $lark-purple;
+  font-weight: 600;
+  font-family: $body-font;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  &:hover, &:active, &:focus {
+    background-color: lighten($lark-purple, 90%);
+    color: $lark-purple;
+  }
+}
+
+.btn.btn-wide {
+  width: 100%;
+}
+
+.btn.btn-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 4px 4px;
+}
+
+.btn.btn-sharp {
+  border-radius: 0px;
+}
+
+.btn.btn-top-sharp {
+  border-radius: 0 0 4px 4px;
+}

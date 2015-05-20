@@ -1,0 +1,102 @@
+a.popover-indicator {
+  background: $lighter-gray;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-left: 1px;
+  border-radius: 50%;
+  text-align: center;
+  color: $black;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration:none;
+  text-shadow: none;
+  
+  &:before {
+    content: '?';
+  }
+  
+  &:hover {
+    background: $lark-purple;
+    color: $white;
+  }
+  
+  &.inverted {
+    background: $white;
+    color: $black;
+
+    &:hover {
+      background: $black;
+      color: $white;
+    }
+  }
+}
+
+.popover {
+  background-color: $lark-purple;
+  background-clip: padding-box;
+  z-index: 1010;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 276px;
+  display: none;
+  padding: 1px;
+  border: 1px solid rgba($white, 0.5);
+  border-radius: 6px;
+  @include box-shadow(0 0 1px 1px rgba($lark-purple, 0.2));
+  text-align: left;
+  color: white;
+  white-space: normal;
+
+  &.top {
+    .arrow {
+
+      border-top-color: rgba($white, 0.9);
+
+      &:after {
+        border-top-color: $lark-purple;
+      }
+    }
+  }
+
+  &.bottom {
+    .arrow {
+      border-bottom-color: rgba($white, 0.9);
+
+      &:after {
+        border-bottom-color: $lark-purple;
+      }
+    }
+  }
+  &.left {
+    .arrow {
+      border-left-color: rgba($white, 0.9);
+
+      &:after {
+        border-left-color: $lark-purple;
+      }
+    }
+  }
+  &.right {
+    .arrow {
+      border-right-color: rgba($white, 0.9);
+
+      &:after {
+        border-right-color: $lark-purple;
+      }
+    }
+  }
+
+  .popover-content {
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 17px;
+    text-transform: none;
+  }
+}

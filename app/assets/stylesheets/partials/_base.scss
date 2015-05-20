@@ -1,0 +1,177 @@
+body, html {
+  background-color: $white;
+  height: 100%;
+  min-height: 100%;
+  color: $text-black;
+  font-size: 100% !important;
+  letter-spacing: $body-font-spacing;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, p, a, span, dt, dl, dd {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  @include ease(opacity, .2s);
+
+  .wf-loading & {
+    @include opacity(0);
+    visibility: hidden;
+}
+
+.wf-active & {
+  @include opacity(1);
+}
+}
+
+::selection {
+  background: $dark-blue !important;
+  color: $white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: $dark-blue !important;
+  color: $white;
+  text-shadow: none;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 $black;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: inherit;
+}
+
+select, input[type="color"][list] {
+  background-color: rgba($white,0.0);
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+.opaque {
+  opacity: 1 !important;
+}
+
+.hide {
+  visibility: hidden;
+  display: none;
+}
+
+.pane {
+  &.loading {
+    opacity: 0;
+}
+}
+
+.loaded .pane {
+  transition: opacity 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out;
+  opacity: 1;
+}
+
+.container {
+  &.absolute {
+    min-height: 0px !important;
+}
+
+&.fill {
+  display: table;
+
+  .row {
+    height: 100%;
+    display: table-row;
+
+    & > div {
+      display: table-cell;
+      height: 100%;
+    }
+  }
+}
+}
+
+#skrollr-body {
+  position: relative;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+.sliding-container {
+  position: relative;
+}
+
+.content {
+  padding: 100px 0 50px;
+}
+
+.pagination {
+  margin: 0;
+
+  & > .disabled > {
+    span, span:hover, span:focus,
+    a, a:hover, a:focus {
+      background-color: $black;
+      border-color: rgba($white,0.6);
+      color: rgba($white,0.6);
+  }
+}
+
+& > .active > {
+  span, span:hover, span:focus,
+  a, a:hover, a:focus {
+    background-color: $black;
+    border-color: $white;
+    color: $white;
+    font-weight: 600;
+  }
+}
+
+& > li > {
+  span, a {
+    background-color: $black;
+    border: 1px solid rgba($white,0.6);
+    color: rgba($white,0.6);
+  }
+}
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+  body {
+    overflow-x: hidden;
+}
+
+}
+
+@media (min-width: $screen-lg) {
+  header .glyphicons.earphone {
+    opacity: 0;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .container {
+    padding: 0px;
+}
+
+span.hidden-xs {
+  display: none !important;
+}
+
+.glyphicons.earphone {
+  opacity: 1;
+}
+}
+

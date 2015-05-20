@@ -1,0 +1,471 @@
+.tiles {
+  margin: 20px 0 0 0;
+
+  li {
+    margin: 0 0 30px 0;
+  }
+
+  .tile {
+    @include opacity(0);
+    @include ease(all, .5s);
+
+    &.tile-loaded {
+      @include opacity(1);
+    }
+  }
+
+  .row.details {
+    margin: 0px;
+    border: 1px solid $border-color;
+    border-top: 0px;
+    border-radius: 0 0 3px;
+
+    & > div {
+      position: relative;
+      padding: 25px 10px 10px;
+      border-right: 1px solid $light-border-color;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: $body-font;
+      
+      em {
+        display: inline-block;
+        color: $gray;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 12px;
+      }
+
+      &.paired {
+        font-size: 16px;
+        line-height: 0px;
+      }
+
+      &:last-child {
+        border-right: 0px;
+      }
+
+      label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: $gray;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.tile {
+  background: $black;
+  z-index: 9;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 5px;
+  @include box-shadow(0 1px 1px 0px rgba($black, 0.1));
+
+  &.no-link {
+    cursor: default;
+  }
+
+  &.off {
+    opacity: 0.4 !important;
+    cursor: default;
+
+    .price-tag {
+      display: none;
+    }
+  }
+
+  &.on {
+    cursor: pointer;
+  }
+
+  .tile-content {
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+    left: 0px;
+    height: 18%;
+  }
+
+  .media {
+    background: $white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: block;
+    margin: 0px;
+    border-radius: 5px;
+    @include box-sizing(border-box);
+  }
+
+  .gradient {
+    @include gradient-vertical-three-colors(rgba($white, 0), rgba($white, 0), 50%, rgba($black, .6));
+    z-index: 9;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: -2px;
+    left: 0px;
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+  }
+
+  .coming-soon {
+    background: $lark-purple;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    @include box-shadow(0px 0px 1px 1px rgba($black,0.2));
+    color: $text-white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase; 
+  }
+
+  .caption {
+    position: absolute;
+    right: 20px;
+    bottom: 0px;
+    left: 20px;
+    height: 25%;
+
+    h1, h3 {
+      text-align: left;
+    }
+
+    h1 {
+      border-bottom: 1px solid rgba($white,0.3);
+      text-transform: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  a {
+    z-index: 99;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+    text-decoration: none;
+
+    img {
+      z-index: 9;
+      position: absolute;
+      top: 0px;
+    }
+
+    h1 {
+      overflow: hidden;
+      margin: 0 15px 5px;
+      padding: 0 0 5px;
+      text-align: center;
+      white-space: nowrap;
+      color: $white;
+      font-size: 1.5em;
+      font-weight: 400;
+      font-family: $serif-title-font;
+      letter-spacing: $serif-font-spacing;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 1px #333;
+      text-overflow: ellipsis;
+    }
+
+    h3 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding: 5px 0px;
+      text-align: center;
+      color: $text-white;
+      font-size: 0.7em;
+      font-weight: 400;
+      font-family: $body-font;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 1px #333;
+
+      span {
+        max-width: 340px;
+        display: block;
+        overflow: hidden;
+        padding: 0px 5px;
+        white-space: nowrap;
+        font-weight: 600;
+        text-overflow: ellipsis;
+      }
+    }
+
+    label {
+      background-color: $pale-gray;
+      z-index: 10;
+      position: absolute;
+      bottom: 5px;
+      left: 10px;
+      padding: 2px 8px;
+      border: 1px solid $light-border-color;
+      border-radius: 2px;
+      color: $lark-purple;
+      font-size: 0.65em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  h3 {
+    min-height: 23px;
+
+    &.spacer{
+      display:block;
+    }
+  }
+
+  .line {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+
+  .line:before, .line:after {
+    content: '';
+    background: image-url("line.png") repeat-x 50% 50%;
+    width: 20%;
+    display: table-cell;
+  }
+
+  .price-tag.active {
+    background: image-url("tag-active-md.png") no-repeat;
+    z-index: 99;
+    position: absolute;
+    top: 34px;
+    right: -30px;
+    width: 140px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 5px;
+    @include box-shadow(0 1px 1px 1px rgba($black, 0.2));
+    font-weight: 600;
+    font-family: $body-font;
+
+    .compare {
+      font-size: 11px;
+      text-decoration: line-through;
+      @include animation(scale-fade .3s ease-in-out);
+    }
+
+    .discount {
+      font-size: 28px;
+      font-weight: 600;
+      @include animation(scale-fade .4s ease-in-out);
+      @include animation-delay(.2s);
+    }
+
+    .description {
+      position: absolute;
+      bottom: 3px;
+      font-weight: 600;
+    }
+  }
+
+  .price-tag {
+    background: image-url("tag-md.png") no-repeat;
+    z-index: 99;
+    position: absolute;
+    top: 117px;
+    right: -18px;
+    width: 92px;
+    height: 43px;
+    overflow: hidden;
+    padding: 1px 12px;
+    border-radius: 5px;
+    @include box-shadow(0 1px 1px 1px rgba($black, 0.2));
+    font-weight: 600;
+
+    .discount {
+      margin-top: 2px;
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    .description {
+      position: absolute;
+      bottom: 3px;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.price-tag.fade-in.ng-enter {
+  opacity: 0;
+  @include transition(2s linear all);
+}
+
+.price-tag.fade-in.ng-enter-active {
+  opacity: 1;
+}
+
+.tile-hidden {
+  opacity: 0.5;
+  @include transition(0.5s linear all);
+}
+
+.tile-sm .media, .tile-sm .gradient {
+  width: 100%;
+  height: 278px;
+}
+
+.tile-md .media, .tile-md .gradient {
+  height: 300px;
+}
+
+.tile-lg {
+  height: 420px;
+
+  .media, .gradient {
+    height: 420px;
+  }
+
+  a h1 {
+    font-size: 3em;
+  }
+
+  a h3 {
+    font-size: 1em;
+
+    span {
+      max-width: 680px;
+    }
+  }
+}
+
+.tile-sm, .tile-md {
+  .line:before, .line:after {
+    width: 50%;
+  }
+
+  a h3 {
+    width: 90%;
+  }
+}
+
+
+
+
+@media (max-width: 1024px) {
+
+  .content {
+    padding: 20px 0;
+  }
+
+  .tile-lg, .tile-lg .media, .tile-lg .gradient {
+    height: 300px;
+  }
+
+  .tile-md, .tile-md .media, .tile-md .gradient {
+    height: 220px;
+  }
+
+  .tile {
+    .price-tag {
+      top: 100px;
+
+      &.active {
+        top: 15px;
+        right: -25px;
+      }
+    }
+  }
+
+  .tile-lg {
+    .tile-content {
+      height: 25%;
+    }
+
+    a h1 {
+      padding: 0 5px;
+      font-size: 3em;
+    }
+
+    a h3 {
+      width: 90%;
+      font-size: 1em;
+    }
+  }
+
+  .tile-sm, .tile-md {
+    a h1 {
+      padding: 0 5px;
+      font-size: 18px;
+    }
+
+    a h3 {
+      width: 90%;
+      font-size: 9px;
+    }
+  }
+}
+
+
+
+
+@media (max-width: 420px) {
+
+  .tile, .tile .media, .tile .gradient {
+    height: 220px;
+    border-radius: 0px;
+    
+    a h1 {
+      padding: 0 5px;
+      font-size: 18px;
+    }
+
+    a h3 {
+      width: 90%;
+      font-size: 9px;
+    }
+  }
+
+  .content {
+    overflow: hidden;
+  }
+
+  .tile {
+    overflow: hidden;
+
+    .price-tag.active {
+      top: 15px;
+      right: -40px; 
+    }
+  }
+
+  .inspiration-grid, #alternate_inspiration_pane {
+    li {
+      margin-bottom: 15px;
+      padding-right: 0px;
+      padding-left: 0px;
+    
+      .tile {
+        border-radius: 0px;
+
+        div {
+          border-radius: 0px;
+        }
+      }
+    }
+  }
+}

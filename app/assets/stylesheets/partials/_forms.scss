@@ -1,0 +1,386 @@
+.trip-summary {
+  @include clearfix;
+  background: $black;
+  padding: 5px;
+  border-top: 1px solid rgba($white, 0.35);
+  border-bottom: 1px solid rgba($white, 0.35);
+
+  .raquo {
+    font-size: 19px;
+    line-height: 16px;
+  }
+}
+
+.lark-form {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba($black, .2);
+  border-radius: 4px;
+  color: $text-black;
+  font-weight: 300;
+  font-family: $body-font;
+
+  &.search-form {
+    overflow: visible;
+
+    .lark-calendar {
+      width: 100% !important;
+    }
+  }
+
+  &.booking {
+    background: $pale-gray;
+    border: none;
+  }
+
+  #departs_at, #returns_at {
+    cursor: pointer;
+  }
+
+  form {
+    margin-bottom: 0px;
+  }
+
+  .form-control {
+    background-color: rgba($black,0.0);
+  }
+
+  .row {
+    position: relative;
+    margin: 0px;
+    border-bottom: 1px solid $light-border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.last {
+      border-bottom: none;
+    }
+
+    & > div {
+      margin: 0px;
+      padding: 0px;
+      border-right: 1px solid $light-border-color;
+      @include box-sizing(border-box);
+
+      &:last-child {
+        border-right: none;
+      }
+      &.form-status-summary{
+        height:72px;
+        background-color: $pale-gray;
+        padding: 5px 15px;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        font-family: $body-font;
+        border-style: solid;
+        border-width:1px 0 1px 0;
+
+        display: table;
+        &.flash{
+          @include animation(fadedown .4s ease-in-out);
+          @include ease(all, $sidebar-slide-duration);
+        }
+        &.success{
+          color:green;
+        }
+        &.error{
+          color:red;
+        }
+        &.flash-alert{
+          background: $no-availability-bg;
+          border-color: darken($no-availability-bg, 10%);
+          color: $white;
+        }
+        &.flash-notice{
+          background: lighten($pos-green, 25%);
+          border-color: darken($pos-green, 25%);
+
+          color: darken($pos-green, 25%);
+        }
+        span{
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .form-group, .control-group {
+    background: $white;
+    position: relative;
+    height: 72px;
+    margin-bottom: 0px;
+
+    &.title {
+      height: 100px;
+    }
+
+    &.radius-top {
+      border-radius: 3px 3px 0 0;
+    }
+
+    &.button {
+      background: transparent;
+    }
+
+    &.dim {
+      background: $pale-gray
+    }
+
+    &.transparent {
+      background: transparent;
+    }
+
+    h1 {
+      height: 100px;
+      margin: 0px;
+      text-align: center;
+      color: $text-black;
+      font-size: 36px;
+      font-weight: 600;
+      font-family: $body-font;
+      line-height: 100px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0px;
+      padding: 0 0 0 16px;
+      color: $text-black;
+      font-size: 20px;
+      font-weight: 400;
+      font-family: $body-font;
+      line-height: 72px;
+    }
+
+    label {
+      z-index: 1;
+      display: block;
+      padding: 15px 0 0 16px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: $body-font;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    input[type='text'], input[type='email'], input[type='tel'], input[type='date'], input[type='password'], select{
+      display: block;
+      padding-left: 15px;
+      border: 0px;
+      border-radius: 0px;
+      @include box-shadow(none);
+      color: $medium-gray;
+      @include placeholder($light-border-color);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    input[type='checkbox'] {
+      width: inherit;
+      height: inherit;
+      margin-top: -1px;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: window;
+      padding: 5px 0 5px 15px;
+      font-weight: 400;
+      text-overflow: '';
+    }
+
+    &.error {
+      label, small {
+        color: $neg-red;
+      }
+    }
+    .error-container {
+      position: absolute;
+      top:10px;
+      right:16px;
+      color:red;
+      small{
+        font-size: 0.65em;
+        font-weight: 600;
+        font-family: $body-font;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .help-block {
+    position: relative;
+    top: 8px;
+    right: 10px;
+    margin: 0px;
+    text-align: right;
+    color: $neg-red;
+    font-size: 11px;
+  }
+}
+
+
+.lark-form-wrapper {
+  width:450px;
+  margin:20px auto;
+
+  h2 {
+    font-weight: 300;
+    color:#fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+
+.lark-form-bar {
+  margin-bottom: 0px;
+
+  .menu-item {
+    span.icon {
+      position: absolute;
+      top: 0px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      line-height: 81px;
+    }
+  }
+  .duration-nights {
+    opacity: 0.6;
+    position: absolute;
+    display: inline-block;
+    margin-top: 32px;
+    margin-left:12px;
+  }
+
+  .lark-calendar {
+    margin-top: -20px;
+    margin-left: 25px;
+  }
+
+  #departs_at, #returns_at{
+    cursor: pointer;
+  }
+
+  .glyphicons {
+    position: inherit;
+
+    i:before {
+      color: $white;
+      font-size: 16px;
+    }
+  }
+
+  .dates {
+    .form-group {
+      input[type='text'] {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .row {
+    & > div {
+      padding: 0px;
+      margin: 0px;
+      @include box-sizing(border-box);
+    }
+  }
+
+  .form-group {
+    position: relative;
+    height: 40px;
+    margin-bottom: 0px;
+    color: $white;
+
+    .form-control {
+      padding: 5px 4px;
+    }
+
+    input[type='text'], select {
+      width: 100%;
+      margin-top: 2px;
+      margin-left: 2px;
+      border: 0px;
+      border-radius: 0px;
+      @include box-shadow(none);
+      color: $white;
+      @include placeholder($light-border-color);
+      font-size: 12px;
+    }
+
+    select.form-control {
+      -webkit-appearance: none;
+      -moz-appearance: window;
+      padding: 8px 0 4px;
+      text-overflow: '';
+      text-indent: 1px;
+    }
+  }
+
+  .refresh {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    display: block;
+    float: right;
+
+    i:before {
+      font-size: 16px;
+    }
+
+    &.active {
+      i:before {
+        @include animation-name(spin);
+        @include animation-duration(3s);
+        @include animation-timing-function(linear);
+        @include animation-iteration-count(infinite);
+      }
+    }
+  }
+}
+
+.spin{
+  i:before{
+    @include animation-name(spin);
+    @include animation-duration(3s);
+    @include animation-timing-function(linear);
+    @include animation-iteration-count(infinite);
+  }
+}
+
+@include keyframes(spin) {
+  from { @include rotate(0deg); }
+  to { @include rotate(360deg); }
+}
+
+
+
+
+@media (max-width: 768px) {
+
+  #home-page #hp_form .lark-form {
+    .form-group {
+      padding-right: 10px;
+      padding-left: 10px;
+      
+      &.button {
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+    }
+  }
+}
