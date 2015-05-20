@@ -1,0 +1,22 @@
+{
+  "name": "devise_sandbox",
+  "version": "0.0.0",
+  "authors": [
+    "Koushik Dasika <koushikdasika@gmail.com>"
+  ],
+  "description": "Koushik is the greatest",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.3",
+    "angular-bootstrap": "~0.12.1"
+  }
+}
