@@ -16,7 +16,8 @@
   user.save!
   5.times {
     user.articles.create(
-      title: Faker::Lorem.sentence(3),
+      title: Faker::Company.bs,
+      logo: Faker::Company.logo,
       content: Faker::Hacker.say_something_smart
     )
   }

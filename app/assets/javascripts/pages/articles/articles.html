@@ -1,2 +1,15 @@
-<h1>{{article.title}}</h1>
-<p>{{article.content}}</p>
+<h1 class="text-center">{{article.title}}</h1>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-4 col-xs-offset-4'>
+      <img class="img-responsive" src="{{article.logo}}"></img>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <p class="text-center" style="margin-top: 20px;">{{article.content}}</p>
+    </div>
+  </div>
+
+</div>
