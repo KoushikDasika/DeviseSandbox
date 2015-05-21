@@ -10,6 +10,8 @@ require('angular-route');
 require('angular-sanitize');
 
 require('../../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min');
+require('../../../bower_components/ng-token-auth/dist/ng-token-auth.min');
+require('../../../bower_components/angular-cookie/angular-cookie.min');
 
 angular.module("lark.components", ["ui.bootstrap"]);
 angular.module("lark.pages", ["ui.bootstrap"]);
@@ -28,6 +30,7 @@ angular.module('deviseSandbox', [
   'ngSanitize',
   'ngAnimate',
   'ngRoute',
+  'ng-token-auth',
   "ui.bootstrap"
 ])
 .config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {

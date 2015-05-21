@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.3",
-    "angular-bootstrap": "~0.12.1"
+    "angular-bootstrap": "~0.12.1",
+    "ng-token-auth": "~0.0.25",
+    "angular-cookie": "~4.0.6"
   }
 }

@@ -9,6 +9,7 @@
 
 10.times {
   user = User.create(
+    uid: SecureRandom.uuid,
     name: Faker::Name.name,
     email: Faker::Internet.free_email,
     password: "password"
