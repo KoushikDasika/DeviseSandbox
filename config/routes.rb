@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-=begin
-  devise_for :users do
-    resources :articles
-  end
-=end
-
   root 'welcome#index'
+
+  devise_for :users
 
   resources :users do
     resources :articles
   end
-
 end

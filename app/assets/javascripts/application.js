@@ -11,13 +11,16 @@ require('angular-sanitize');
 
 require('../../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min');
 
+angular.module("lark.components", ["ui.bootstrap"]);
 angular.module("lark.pages", ["ui.bootstrap"]);
 angular.module("lark.services", []);
 
+require("./components");
 require("./pages");
 require("./services");
 
 angular.module('deviseSandbox', [
+  'lark.components',
   'lark.pages',
   'lark.services',
   'ngCookies',
@@ -30,6 +33,7 @@ angular.module('deviseSandbox', [
 .config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 
   $routeProvider.when('/', {
     templateUrl: '/assets/pages/home/home.html',

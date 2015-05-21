@@ -1,0 +1,18 @@
+<div class="navbar navbar-default" role="navigation" bs-navbar>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/#/">LARK AGENT DASHBOARD</a>
+  </div>
+  <ul class="nav navbar-nav pull-right">
+    <li>
+      <div style="margin:8px;">
+        <a class="btn btn-default pull-right" ng-click="openLoginModal()" ng-hide="userSignedIn();">Login</a>
+        <div ng-show="userSignedIn()" class="clearfix">
+          <div logout class="pull-right"></div>
+          <div class="pull-right" style="padding:7px;">{{ currentUser.name }}</div>
+          <div class="avatar pull-right" title="{{ currentUser.name }}" style="background-image:url('{{ currentUser.avatar }}');"></div>
+          <a class="btn btn-default pull-right" ng-click="userLogout()">Logout</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal-header"></div>
+<div class="modal-body">
+  <form name="loginForm" class="lark-form login-form" style="border:none;"
+    novalidate ng-submit="login(credentials)">
+
+    <div class="row">
+      <div class="control-group title col-xs-12">
+        <h1>Login to Lark</h1>
+      </div>
+    </div>
+
+    <div class="row" ng-repeat="message in messages">
+      <div class="form-status-summary flash flash-{{message[0]}} col-xs-12">
+        <span>{{ message[1] }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group">
+        <label for="email">Email</label>
+        <input required type="email" id="email" name="email" ng-model="credentials.email" class="form-control">
+        <div class="error-container" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+          <small class="error" ng-show="loginForm.email.$error.email">Must be a valid email address</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group">
+        <label for="password">Password</label>
+        <input required type="password" id="password" name="password" ng-model="credentials.password" ng-minlength="6" class="form-control">
+        <div class="error-container" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+          <small class="error" ng-show="loginForm.password.$error.minlength">Must be at least 6 characters</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <button name="submit" type="submit" class="submit-button btn btn-book btn-fill btn-sharp" ng-disabled="loginForm.$invalid || credentials.updating">
+        <span class="button-text">Login</span>
+      </button>
+    </div>
+
+  </form>
+</div>
