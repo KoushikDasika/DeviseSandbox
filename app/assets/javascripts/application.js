@@ -22,6 +22,7 @@ require("./pages");
 require("./services");
 
 angular.module('deviseSandbox', [
+  'ipCookie',
   'lark.components',
   'lark.pages',
   'lark.services',
@@ -33,7 +34,7 @@ angular.module('deviseSandbox', [
   'ng-token-auth',
   "ui.bootstrap"
 ])
-.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
+.config(['$routeProvider','$httpProvider', '$authProvider', function ($routeProvider, $httpProvider, $authProvider) {
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common["X-Requested-With"];
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -46,8 +47,18 @@ angular.module('deviseSandbox', [
     templateUrl: '/assets/pages/users/users.html',
     controller: 'UserController'
   })
+  .when('/articles', {
+    templateUrl: '/assets/pages/users/users.html',
+    controller: 'AaarticleController'
+  })
   .when('/users/:user_id/articles/:article_id', {
     templateUrl: '/assets/pages/articles/articles.html',
     controller: 'ArticleController'
+  });
+
+  $authProvider.configure({
+    apiUrl:                  '/api',
+    emailSignInPath:         '/auth/sign_in'
+
   })
 }])

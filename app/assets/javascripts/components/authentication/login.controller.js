@@ -13,7 +13,6 @@ angular.module('lark.components')
       var originalButtonText = submitButton.text();
 
       if ($scope.loginForm.$valid) {
-        $scope.credentials.updating = true;
         submitButton.text("Logging in...");
         AuthenticationService.login(credentials).then(function (user) {
           UserService.setCurrentUser(user.data);

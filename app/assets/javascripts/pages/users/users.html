@@ -14,7 +14,7 @@
           <tr ng-repeat="article in articles">
             <td>{{article.id}}</td>
             <td>{{article.title}}</td>
-            <td><a href="/#/users/{{user_id}}/articles/{{article.id}}">See Article</a></td>
+            <td><a ng-href="/#/users/{{user_id}}/articles/{{article.id}}">See Article</a></td>
           </tr>
         </tbody>
       </table>

@@ -12,6 +12,7 @@
     uid: SecureRandom.uuid,
     name: Faker::Name.name,
     email: Faker::Internet.free_email,
+    provider: "email",
     password: "password"
   )
   user.save!

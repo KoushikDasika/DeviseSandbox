@@ -15,6 +15,17 @@ angular.module('lark.services')
       return deferred.promise;
     }
 
+    articleService.getAllTheArticles = function() {
+      var deferred = $q.defer();
+      var api_url = "http://localhost:3000/articles"
+      $http.get(api_url).then(function (data){
+        console.log("articles are ", data.data)
+        deferred.resolve(data.data);
+      });
+
+      return deferred.promise;
+    }
+
     articleService.getArticle = function(user_id, article_id) {
       var deferred = $q.defer();
       var api_url = "http://localhost:3000/users/" + user_id + "/articles/" + article_id

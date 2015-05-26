@@ -19,6 +19,11 @@ angular.module('lark.services')
       return currentUser;
     }
 
+    userService.setCurrentUser = function(user) {
+      console.log("setting current user", user)
+      this.currentUser = user;
+    }
+
     return userService;
   }
 ])
