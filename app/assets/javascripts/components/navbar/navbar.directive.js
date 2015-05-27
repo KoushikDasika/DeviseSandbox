@@ -21,8 +21,8 @@ angular.module('lark.components')
 
         modalInstance.result.then(function (selectedItem) {
           $scope.currentUser = UserService.getCurrentUser();
-          console.log("closing modal", $scope)
-        }, function () {
+            console.log("closing modal", $scope)
+          }, function () {
           $log.info('Modal dismissed at: ' + new Date());
         });
       };

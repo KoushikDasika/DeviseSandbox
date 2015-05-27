@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #@articles = Article.where(user_id: params[:user_id])
-    @articles = Article.all
+    @articles = Article.where(user_id: params[:user_id])
+    #@articles = Article.all
     render json: @articles
   end
 

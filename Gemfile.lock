@@ -1,10 +1,3 @@
-PATH
-  remote: /Users/koushik/git/lark/devise_token_auth
-  specs:
-    devise_token_auth (0.1.32.beta9)
-      devise (~> 3.3)
-      rails (~> 4.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -66,6 +59,9 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise_token_auth (0.1.31)
+      devise (~> 3.3)
+      rails (~> 4.2)
     erubis (2.7.0)
     execjs (2.5.2)
     faker (1.4.3)
@@ -169,7 +165,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  devise_token_auth!
+  devise_token_auth
   faker
   jbuilder (~> 2.0)
   jquery-rails

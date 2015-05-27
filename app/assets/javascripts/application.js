@@ -47,17 +47,13 @@ angular.module('deviseSandbox', [
     templateUrl: '/assets/pages/users/users.html',
     controller: 'UserController'
   })
-  .when('/articles', {
-    templateUrl: '/assets/pages/users/users.html',
-    controller: 'AaarticleController'
-  })
   .when('/users/:user_id/articles/:article_id', {
     templateUrl: '/assets/pages/articles/articles.html',
     controller: 'ArticleController'
   });
 
   $authProvider.configure({
-    apiUrl:                  '/api',
+    apiUrl:                  'http://localhost:3000',
     emailSignInPath:         '/auth/sign_in'
 
   })
