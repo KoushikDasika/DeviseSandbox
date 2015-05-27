@@ -57,8 +57,9 @@ angular.module('deviseSandbox', [
   $authProvider.configure({
     apiUrl:                  'http://localhost:3000',
     emailSignInPath:         '/auth/sign_in'
-
   })
+
+
 }])
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
@@ -80,7 +81,8 @@ angular.module('lark.components')
       if ($scope.loginForm.$valid) {
         submitButton.text("Logging in...");
         AuthenticationService.login(credentials).then(function (user) {
-          UserService.setCurrentUser(user.data);
+          console.log("login service user response", user)
+          UserService.setCurrentUser(user);
           $modalInstance.close();
         }, function () {
           $scope.messages = [['alert','Sorry, we could not log you in with the email and password provided.']]
@@ -109,7 +111,9 @@ angular.module('lark.components')
     require: '?ngModel',
     scope: {},
     link: function ($scope, $element, $attrs, ngModel) {
-      $scope.currentUser = UserService.getCurrentUser();
+      UserService.getCurrentUser().then(function(user) {
+        $scope.currentUser = user;
+      });
 
       $scope.openLoginModal = function() {
         var modalInstance = $modal.open({
@@ -119,26 +123,18 @@ angular.module('lark.components')
         });
 
         modalInstance.result.then(function (selectedItem) {
-          $scope.currentUser = UserService.getCurrentUser();
-            console.log("closing modal", $scope)
-          }, function () {
+          UserService.getCurrentUser().then(function(user) {
+            $scope.currentUser = user;
+          });
+        }, function () {
           $log.info('Modal dismissed at: ' + new Date());
         });
       };
 
       $scope.userLogout = function() {
-        console.log("loggging out");
         AuthenticationService.logout().then(function () {
-          $rootScope.$broadcast(EVENTS.AUTH.logoutSuccess);
-          UserService.destroyCurrentUser(user);
           $scope.currentUser = null;
-        }, function () {
-          $rootScope.$broadcast(EVENTS.AUTH.logoutFailed);
         });
-      };
-
-      $scope.userSignedIn = function() {
-        return $scope.currentUser;
       };
     }
   }
@@ -230,6 +226,7 @@ angular.module('lark.services')
     };
 
     authService.logout = function () {
+      return $auth.signOut()
     };
 
     authService.isAuthenticated = function () {
@@ -249,15 +246,13 @@ require("./user-service")
 },{"./article-service":9,"./authentication-service":10,"./user-service":12}],12:[function(require,module,exports){
 angular.module('lark.services')
 
-.service('UserService', ['$http', '$q', '$rootScope', '$cookieStore',
-  function ($http, $q, $rootScope, $cookieStore) {
+.service('UserService', ['$http', '$q', '$rootScope', '$auth',
+  function ($http, $q, $rootScope, $auth) {
     var userService = {};
-    var currentUser;
 
     userService.getUsers = function() {
       var deferred = $q.defer();
       $http.get("http://localhost:3000/users").then(function (data){
-        console.log("users are ", data.data)
         deferred.resolve(data.data);
       });
 
@@ -265,12 +260,16 @@ angular.module('lark.services')
     }
 
     userService.getCurrentUser = function() {
-      return currentUser;
+      var deferred = $q.defer();
+      $auth.validateUser().then(function(valid_token){
+        deferred.resolve(valid_token)
+      })
+
+      return deferred.promise;
     }
 
     userService.setCurrentUser = function(user) {
       console.log("setting current user", user)
-      this.currentUser = user;
     }
 
     return userService;

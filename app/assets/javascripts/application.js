@@ -55,6 +55,7 @@ angular.module('deviseSandbox', [
   $authProvider.configure({
     apiUrl:                  'http://localhost:3000',
     emailSignInPath:         '/auth/sign_in'
-
   })
+
+
 }])

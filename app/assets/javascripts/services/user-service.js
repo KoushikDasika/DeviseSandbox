@@ -1,14 +1,12 @@
 angular.module('lark.services')
 
-.service('UserService', ['$http', '$q', '$rootScope', '$cookieStore',
-  function ($http, $q, $rootScope, $cookieStore) {
+.service('UserService', ['$http', '$q', '$rootScope', '$auth',
+  function ($http, $q, $rootScope, $auth) {
     var userService = {};
-    var currentUser;
 
     userService.getUsers = function() {
       var deferred = $q.defer();
       $http.get("http://localhost:3000/users").then(function (data){
-        console.log("users are ", data.data)
         deferred.resolve(data.data);
       });
 
@@ -16,12 +14,16 @@ angular.module('lark.services')
     }
 
     userService.getCurrentUser = function() {
-      return currentUser;
+      var deferred = $q.defer();
+      $auth.validateUser().then(function(valid_token){
+        deferred.resolve(valid_token)
+      })
+
+      return deferred.promise;
     }
 
     userService.setCurrentUser = function(user) {
       console.log("setting current user", user)
-      this.currentUser = user;
     }
 
     return userService;

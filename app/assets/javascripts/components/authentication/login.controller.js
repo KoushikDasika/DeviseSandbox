@@ -15,7 +15,8 @@ angular.module('lark.components')
       if ($scope.loginForm.$valid) {
         submitButton.text("Logging in...");
         AuthenticationService.login(credentials).then(function (user) {
-          UserService.setCurrentUser(user.data);
+          console.log("login service user response", user)
+          UserService.setCurrentUser(user);
           $modalInstance.close();
         }, function () {
           $scope.messages = [['alert','Sorry, we could not log you in with the email and password provided.']]

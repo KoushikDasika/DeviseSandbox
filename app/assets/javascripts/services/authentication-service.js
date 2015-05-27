@@ -10,6 +10,7 @@ angular.module('lark.services')
     };
 
     authService.logout = function () {
+      return $auth.signOut()
     };
 
     authService.isAuthenticated = function () {

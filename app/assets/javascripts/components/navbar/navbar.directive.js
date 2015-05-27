@@ -10,7 +10,9 @@ angular.module('lark.components')
     require: '?ngModel',
     scope: {},
     link: function ($scope, $element, $attrs, ngModel) {
-      $scope.currentUser = UserService.getCurrentUser();
+      UserService.getCurrentUser().then(function(user) {
+        $scope.currentUser = user;
+      });
 
       $scope.openLoginModal = function() {
         var modalInstance = $modal.open({
@@ -20,26 +22,18 @@ angular.module('lark.components')
         });
 
         modalInstance.result.then(function (selectedItem) {
-          $scope.currentUser = UserService.getCurrentUser();
-            console.log("closing modal", $scope)
-          }, function () {
+          UserService.getCurrentUser().then(function(user) {
+            $scope.currentUser = user;
+          });
+        }, function () {
           $log.info('Modal dismissed at: ' + new Date());
         });
       };
 
       $scope.userLogout = function() {
-        console.log("loggging out");
         AuthenticationService.logout().then(function () {
-          $rootScope.$broadcast(EVENTS.AUTH.logoutSuccess);
-          UserService.destroyCurrentUser(user);
           $scope.currentUser = null;
-        }, function () {
-          $rootScope.$broadcast(EVENTS.AUTH.logoutFailed);
         });
-      };
-
-      $scope.userSignedIn = function() {
-        return $scope.currentUser;
       };
     }
   }
